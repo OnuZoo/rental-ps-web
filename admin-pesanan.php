@@ -2,8 +2,8 @@
 session_start();
 require 'config.php';
 
-// Cek keamanan: harus login
-if (!isset($_SESSION['status_login']) || $_SESSION['status_login'] != true) {
+// Cek keamanan menggunakan COOKIE
+if (!isset($_COOKIE['status_login']) || $_COOKIE['status_login'] != 'true') {
     header("Location: login.php");
     exit;
 }
