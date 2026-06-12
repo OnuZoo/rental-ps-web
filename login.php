@@ -1,9 +1,9 @@
 <?php
-session_start();
-
+// Hapus session_start() karena kita pakai Cookie
 require 'config.php';
 
-if (isset($_SESSION['status_login']) && $_SESSION['status_login'] == true) {
+// Jika cookie login sudah ada, langsung lempar ke pesanan
+if (isset($_COOKIE['status_login']) && $_COOKIE['status_login'] == 'true') {
     header("Location: admin-pesanan.php");
     exit;
 }
@@ -22,19 +22,23 @@ if (isset($_POST['login'])) {
 
     if (mysqli_num_rows($query) > 0) {
 
-        $_SESSION['status_login'] = true;
-        $_SESSION['username'] = $username;
+        // Buat cookie yang bertahan selama 1 hari (86400 detik)
+        setcookie('status_login', 'true', time() + 86400, "/");
+        setcookie('admin_user', $username, time() + 86400, "/");
 
         header("Location: admin-pesanan.php");
         exit;
 
     } else {
-
         $error = "Username atau password salah!";
-
     }
 }
 ?>
+
+<!-- HTML di bawahnya biarkan sama persis seperti sebelumnya -->
+<!DOCTYPE html>
+<html lang="id">
+...
 
 <!DOCTYPE html>
 <html lang="id">
