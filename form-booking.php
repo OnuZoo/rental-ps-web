@@ -85,7 +85,7 @@ while ($b = mysqli_fetch_assoc($query_booking)) {
                         <!-- Nomor WhatsApp -->
                         <div class="mb-3">
                             <label for="no_whatsapp" class="form-label">Nomor WhatsApp Aktif:</label>
-                            <input type="text" id="no_whatsapp" name="no_whatsapp" class="form-control" required>
+                            <input type="tel" id="no_whatsapp" name="no_whatsapp" class="form-control" required>
                         </div>
 
                         <!-- Durasi -->
