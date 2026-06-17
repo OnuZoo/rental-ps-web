@@ -164,6 +164,13 @@ while ($b = mysqli_fetch_assoc($query_booking)) {
 
             cekKesesuaian();
         }
+        
+        const inputTelepon = document.querySelector('input[name="no_whatsapp"]');
+        if (inputTelepon) {
+            inputTelepon.addEventListener("input", function () {
+            this.value = this.value.replace(/[^0-9]/g, "");
+            });
+        }
 
         function cekKesesuaian() {
             let inputWaktu = document.getElementById('waktu_mulai');
